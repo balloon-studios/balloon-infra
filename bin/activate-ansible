@@ -1,0 +1,45 @@
+# Gratuitously "adapted" from python's virtualenv/bin/activate. --jcm
+
+# This file must be used with "source <FILE>" *from bash*.
+# You /cannot/ run it directly!
+
+deactivate-ansible () {
+
+    # reset old environment variables
+    if [ -n "$_OLD_ANSIBLE_CONFIG" ] ; then
+        ANSIBLE_CONFIG="$_OLD_ANSIBLE_CONFIG"
+        export ANSIBLE_CONFIG
+        unset _OLD_ANSIBLE_CONFIG
+    fi
+
+    if [ -n "$_OLD_PS1" ] ; then
+        PS1="$_OLD_PS1"
+        export PS1
+        unset _OLD_PS1
+    fi
+
+    if [ ! "$1" = "nondestructive" ] ; then
+    # Self destruct!
+        unset -f deactivate-ansible
+    fi
+}
+
+# unset irrelevant variables
+deactivate-ansible nondestructive
+
+ANSIBLE_CONFIG_CLIENT=$( cd $(dirname "$BASH_SOURCE") && pwd -P | awk -F/ '{print $NF}' )
+
+_OLD_ANSIBLE_CONFIG="$ANSIBLE_CONFIG"
+ANSIBLE_CONFIG="$HOME/balloon/$ANSIBLE_CONFIG_CLIENT/config-mgmt/ansible/ansible.cfg"
+export ANSIBLE_CONFIG
+
+if [ -z "$ANSIBLE_CONFIG_DISABLE_PROMPT" ] ; then
+    _OLD_PS1="$PS1"
+    if [ "x" != x ] ; then
+        PS1="$PS1"
+    else
+        PS1="(A:$ANSIBLE_CONFIG_CLIENT) $PS1"
+    fi
+    export PS1
+fi
+
