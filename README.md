@@ -14,7 +14,7 @@ this envvar manually, or you can use the following tool & process.
     * mkdir -p ~/balloon/CLIENT
     * git clone CLIENT-INFRA-REPO ~/balloon/CLIENT/config-mgmt
     * ln -s ~/bin/activate-ansible ~/balloon/CLIENT/
-    * mkdir ~/CLIENT # (optional step, for convenience, and is used below)
+    * ln -s ~/balloon/CLIENT ~/CLIENT # (optional step, for convenience, and is used below)
 
 Then, to assume the role of a person using $CLIENT's ansible setup:
 
