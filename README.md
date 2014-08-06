@@ -9,7 +9,7 @@ points onwards to client-specific code libraries, data, etc. You can manage
 this envvar manually, or you can use the following tool & process.
 
 * Check out https://github.com/balloon-studios/balloon-infra into ~/balloon/balloon/config-mgmt/
-* mkdir -p ~/bin ; ln -s ~/balloon/balloon/config-mgmt/activate-ansible ~/bin/
+* mkdir -p ~/bin ; ln -s ~/balloon/balloon/config-mgmt/bin/activate-ansible ~/bin/
 * For each ~/balloon/$CLIENT using this setup:
     * mkdir -p ~/balloon/CLIENT
     * git clone CLIENT-INFRA-REPO ~/balloon/CLIENT/config-mgmt
